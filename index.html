@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopMaster 🛒 - Tu Tienda Online</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Archivo CSS Personalizado -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fa-solid fa-cart-shopping me-2"></i>ShopMaster
+            </a>
+            <div class="d-flex align-items-center">
+                <!-- Botón Carrito Offcanvas -->
+                <button class="btn btn-light position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
+                    <i class="fa-solid fa-bag-shopping text-primary"></i>
+                    <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER / HERO -->
+    <header class="bg-light py-5 mb-4 border-bottom">
+        <div class="container text-center">
+            <h1 class="fw-bold text-dark">Bienvenido a ShopMaster 🛍️</h1>
+            <p class="text-muted lead">Encuentra los mejores productos al mejor precio, directo a tu puerta.</p>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DE PRODUCTOS -->
+    <main class="container mb-5">
+        <div id="loadingSpinner" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="text-muted mt-2">Cargando productos de la tienda...</p>
+        </div>
+        <div id="productsGrid" class="row g-4">
+            <!-- Los productos se inyectarán aquí mediante JavaScript -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 ShopMaster — Todos los derechos reservados. Creado con Inteligencia Artificial.</p>
+        </div>
+    </footer>
+
+    <!-- OFFCANVAS CARRITO DE COMPRAS -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header bg-primary text-white">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel"><i class="fa-solid fa-shopping-cart me-2"></i>Tu Carrito 🛒</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between">
+            <div id="cartItemsContainer" class="overflow-auto flex-grow-1">
+                <!-- Ítems del carrito -->
+                <p class="text-muted text-center mt-5">Tu carrito está vacío 🛍️</p>
+            </div>
+            <div class="border-top pt-3">
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="fw-bold fs-5">Total:</span>
+                    <span id="cartTotal" class="fw-bold fs-5 text-success">$0.00</span>
+                </div>
+                <button id="checkoutBtn" class="btn btn-success w-100 py-2 fw-bold" disabled data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                    💳 Ir a pagar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE DETALLES DEL PRODUCTO -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="productModalLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-center">
+                            <img id="modalImg" src="" alt="Producto" class="img-fluid rounded modal-img-custom">
+                        </div>
+                        <div class="col-md-6 mt-3 mt-md-0">
+                            <span id="modalCategory" class="badge bg-secondary mb-2 text-uppercase"></span>
+                            <h4 id="modalTitle" class="fw-bold text-dark"></h4>
+                            <p id="modalDescription" class="text-muted small"></p>
+                            <h3 id="modalPrice" class="text-primary fw-bold mb-3"></h3>
+                            
+                            <div class="mb-3 d-flex align-items-center">
+                                <label for="modalQuantity" class="form-label me-3 mb-0 fw-bold">Cantidad:</label>
+                                <input type="number" id="modalQuantity" class="form-control w-25 text-center" value="1" min="1" max="10">
+                            </div>
+                            
+                            <button id="modalAddToCartBtn" class="btn btn-success w-100 fw-bold">
+                                🛒 Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE PASARELA DE PAGO -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title fw-bold" id="checkoutModalLabel"><i class="fa-solid fa-credit-card me-2"></i>Pasarela de Pago</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="mb-3">
+                            <label for="cardName" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="cardName" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                            <input type="text" class="form-control" id="cardNumber" placeholder="4532 •••• •••• ••••" maxlength="19" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label for="cardExp" class="form-label">Vencimiento</label>
+                                <input type="text" class="form-control" id="cardExp" placeholder="MM/AA" maxlength="5" required>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="cardCvc" class="form-label">Código CVC</label>
+                                <input type="password" class="form-control" id="cardCvc" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 py-2 fw-bold mt-2">
+                            ✅ Pagar ahora y Generar Ticket
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Archivo JS Personalizado -->
+    <script src="script.dev.js"></script>
+</body>
+</html>
