@@ -1,43 +1,93 @@
-# 🛒 ShopMaster — Tienda Virtual Moderna con Carrito, Pasarela de Pago y Recibo Térmico en PDF
+Documentación Técnica de Desarrollo y Despliegue: "ShopMaster"
 
-¡Hola! En este documento detallo todo el proceso de desarrollo, estructura de archivos, organización en Visual Studio Code y el despliegue en la nube de mi proyecto **ShopMaster**: una tienda virtual interactiva y responsiva que consume datos reales de la API pública `FakeStoreAPI`, implementa un carrito de compras con persistencia local (`LocalStorage`), un modal de detalles, una pasarela de pago simulada y un sistema automático de generación de tickets de compra estilo recibo térmico en PDF mediante `jsPDF`.
+ En este documento presento la memoria técnica completa del desarrollo, organización y despliegue en la nube de ShopMaster: una tienda virtual interactiva y responsiva desarrollada con HTML5, CSS3, JavaScript (ES6+), Bootstrap 5 y jsPDF, conectada a la API pública FakeStoreAPI. La aplicación incluye un catálogo dinámico, modal de detalles, carrito de compras persistente (LocalStorage)
+ 
+URL DEL REPOSITORIO: https://genekristi.github.io/portafolio-e-commerce-ropa/
+URL DE VERCEL: https://portafolio-e-commerce-ropa.vercel.app/
 
----
-
-## 🛠️ Tecnologías y Librerías Utilizadas
-
-Para este proyecto integré los siguientes estándares y herramientas del desarrollo web frontend:
-* **HTML5:** Estructura semántica de la página, modales y contenedores.
-* **CSS3:** Estilos personalizados, paleta de colores corporativa y diseño visual.
-* **JavaScript (ES6+):** Lógica de negocio, manipulación del DOM, asincronía con `Fetch API` y persistencia.
-* **Bootstrap 5:** Framework CSS para componentes responsivos (rejillas, offcanvas, modales).
-* **Font Awesome 6:** Iconografía moderna para mejorar la experiencia de usuario (UX).
-* **FakeStoreAPI:** API REST gratuita para la obtención dinámica del catálogo de productos.
-* **jsPDF:** Librería de JavaScript para maquetar y descargar comprobantes en formato de recibo térmico (80 mm).
-
----
-
-## ✨ Características Principales
-
-1. **Catálogo Dinámico:** Carga automática de productos desde la API externa, organizados en tarjetas adaptables.
-2. **Vista de Detalles (Modal):** Permite inspeccionar la imagen ampliada, categoría, descripción completa y seleccionar la cantidad deseada antes de comprar.
-3. **Carrito de Compras Flotante (Offcanvas):** 
-   * Añadir, modificar cantidades o eliminar productos.
-   * Cálculo en tiempo real del total acumulado.
-   * Persistencia local: los productos no se pierden si recargas la página (`LocalStorage`).
-4. **Pasarela de Pago Simulada:** Formulario interactivo con validación de datos de tarjeta y titular.
-5. **Generador de Ticket Térmico en PDF:** Al confirmar el pago, se descarga automáticamente un recibo de compra ajustado a dimensiones de impresión térmica (80 mm), utilizando fuente monoespaciada y formato limpio.
-
----
-
-## 💻 Estructura y Organización del Proyecto en Visual Studio Code
-
-Para mantener una separación limpia de responsabilidades (buenas prácticas de desarrollo), estructuré el código en archivos independientes dentro de la carpeta raíz del proyecto:
-
-```text
+1. Arquitectura y Estructura del Proyecto
+Para garantizar la mantenibilidad, escalabilidad y buenas prácticas de desarrollo frontend, modularicé la aplicación en tres archivos independientes dentro del directorio raíz del proyecto:
+Plaintext
 ShopMaster/
-│
-├── index.html       # Estructura semántica y componentes Bootstrap
-├── styles.css       # Estilos personalizados y ajustes visuales
-├── script.dev.js    # Lógica de la aplicación, API, carrito y jsPDF
-└── README.md        # Documentación general del repositorio
+index.html       Estructura semántica, componentes Bootstrap y modales
+styles.css         Estilos personalizados, correcciones y diseño responsivo
+script.dev.js     Lógica de negocio, consumo de API, carrito y generación de PDF
+README.md     Documentación general y presentación del repositorio
+
+ 2. Desarrollo Local en Visual Studio Code y Live Server
+Organización en VS Code
+Apertura del Espacio de Trabajo: Abrí Visual Studio Code y seleccioné la opción Archivo > Abrir carpeta... (File > Open Folder), eligiendo la carpeta principal ShopMaster.
+ 
+
+<img width="631" height="355" alt="image" src="https://github.com/user-attachments/assets/5b6b1555-118b-4972-8fa7-2fc9e6e7c952" />
+
+
+Creación de Archivos: A través del explorador lateral izquierdo, creé los archivos independientes index.html, styles.css, script.dev.js y README.md.
+
+ 
+<img width="194" height="379" alt="image" src="https://github.com/user-attachments/assets/6736ba11-a52d-4b03-bad4-b56caacbc21f" />
+
+ Ejecución en Tiempo Real con Live Server
+ 
+Para probar la aplicación en tiempo real y visualizar los cambios instantáneamente sin necesidad de recargar manualmente el navegador:
+Instalé la extensión Live Server (creada por Ritwick Dey) desde el panel de extensiones de VS Code (Ctrl + Shift + X).
+Abrí el archivo index.html, hice clic derecho sobre el código y seleccioné la opción "Open with Live Server" (o presioné el botón Go Live en la barra de estado inferior).
+
+El servidor local se inició automáticamente en la dirección local [http://127.0.0.1:5500/index.html](http://127.0.0.1:5500/index.html) habilitando la recarga en vivo (Hot Reload).
+
+
+<img width="740" height="431" alt="image" src="https://github.com/user-attachments/assets/15a9e7d3-2b89-4045-a4c9-9c8bb980e594" />
+
+
+3. Gestión de Código y Control de Versiones en GitHub (Método Visual)
+Decidi utilizar para la creación del repositorio de la pag web antigravity, de forma que solo sea tener la url de nuestro repositorio.
+
+
+<img width="763" height="429" alt="image" src="https://github.com/user-attachments/assets/93f431f4-e8f7-4a9f-aba3-b07bd3c9eebf" />
+
+
+<img width="786" height="442" alt="image" src="https://github.com/user-attachments/assets/3ece01e4-f098-4add-8e27-724112be1fab" />
+
+
+Creación del Repositorio:
+Accedí a mi cuenta en GitHub.
+En el panel superior, seleccioné el ícono + y elegí "New repository".
+Asigné el nombre shopmaster y seleccioné la visibilidad Public.
+Dejé las casillas de inicialización automática (README, .gitignore, License) desmarcadas y confirmé haciendo clic en "Create repository".
+
+Carga Gráfica mediante Drag & Drop:
+En la pantalla del recién creado, seleccioné el repositorio
+
+<img width="591" height="350" alt="image" src="https://github.com/user-attachments/assets/50eb11df-ee97-4b3c-9026-02d1fb8f31a0" />
+
+Desde el explorador de archivos de mi computadora, seleccioné la carpeta del proyecto y arrastré y solté los cuatro archivos (index.html, styles.css, script.dev.js, README.md) dentro de la zona de carga.
+
+<img width="706" height="365" alt="image" src="https://github.com/user-attachments/assets/e9420802-5e69-4852-a2da-769a83c80330" />
+
+Confirmación del Commit:
+En la sección "Commit changes", añadí el mensaje descriptivo: feat: carga inicial del proyecto ShopMaster.
+Mantuve seleccionada la rama principal main y presioné el botón verde "Commit changes".
+<img width="680" height="348" alt="image" src="https://github.com/user-attachments/assets/1a5d562b-85a3-456c-b88f-78bdc90d974c" />
+
+ 4. Despliegue en la Nube con Vercel
+Para alojar la página en una red CDN global de alto rendimiento y disponer de una URL pública con certificado SSL (HTTPS) automático:
+
+Autenticación e Integración:
+Ingresé a vercel.com y seleccioné la opción "Sign Up".
+Elegí "Continue with GitHub" y autoricé la vinculación entre ambas plataformas presionando "Authorize Vercel".
+
+Importación del Proyecto:
+En el panel de control de Vercel (Dashboard), seleccioné "Add New..." > "Project".
+Busqué el repositorio shopmaster en la lista de repositorios sincronizados y presioné "Import".
+
+Despliegue y Publicación:
+Vercel detectó automáticamente la arquitectura frontend del proyecto.
+Sin modificar configuraciones adicionales, presioné el botón azul "Deploy".
+En pocos segundos, el entorno completó la compilación y generó el enlace de producción definitivo:
+
+
+<img width="886" height="498" alt="image" src="https://github.com/user-attachments/assets/3b79a15e-b84c-40fb-a1d0-f17a9b988b91" />
+
+<img width="886" height="498" alt="image" src="https://github.com/user-attachments/assets/f8ae34ae-d49c-48bc-9f3d-d13cb108f4f8" />
+
+<img width="852" height="479" alt="image" src="https://github.com/user-attachments/assets/cb16c2a9-0e27-4941-9044-e63a4d1bd3df" />
