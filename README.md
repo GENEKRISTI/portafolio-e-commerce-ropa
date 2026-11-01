@@ -3,6 +3,7 @@ Documentación Técnica de Desarrollo y Despliegue: "ShopMaster"
  En este documento presento la memoria técnica completa del desarrollo, organización y despliegue en la nube de ShopMaster: una tienda virtual interactiva y responsiva desarrollada con HTML5, CSS3, JavaScript (ES6+), Bootstrap 5 y jsPDF, conectada a la API pública FakeStoreAPI. La aplicación incluye un catálogo dinámico, modal de detalles, carrito de compras persistente (LocalStorage)
  
 URL DEL REPOSITORIO: https://genekristi.github.io/portafolio-e-commerce-ropa/
+
 URL DE VERCEL: https://portafolio-e-commerce-ropa.vercel.app/
 
 1. Arquitectura y Estructura del Proyecto
