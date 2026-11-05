@@ -97,11 +97,5 @@ En pocos segundos, el entorno completó la compilación y generó el enlace de p
 
 
 
-Perfil de Desarrollador	Modalidad de Trabajo	Maquetación UI/UX (HTML/CSS)	Lógica & Validación (JS)	Pruebas & Documentación	Despliegue (Git/Vercel)	Tiempo Total Estimado
-Aprendiz / Estudiante	Empresa / Junior Trainee	6.0 Horas	4.0 Horas	3.0 Horas	2.0 Horas	15.0 Horas
-Aprendiz / Estudiante	Freelance	8.0 Horas	5.0 Horas	4.0 Horas	3.0 Horas	20.0 Horas
-Desarrollador Junior	Empresa	3.0 Horas	2.0 Horas	1.5 Horas	0.5 Horas	7.0 Horas
-Desarrollador Junior	Freelance	4.0 Horas	2.5 Horas	2.0 Horas	1.0 Hora	9.5 Horas
-Desarrollador Senior	Empresa	1.5 Horas	1.0 Hora	0.5 Horas	0.2 Horas	3.2 Horas
-Desarrollador Senior	Freelance	2.0 Horas	1.0 Hora	1.0 Hora	0.5 Horas	4.5 Horas
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/fe8fa52a-ae2b-46e3-90b9-72efa9287d5c" />
 
