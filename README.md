@@ -97,5 +97,6 @@ En pocos segundos, el entorno completó la compilación y generó el enlace de p
 
 
 
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/fe8fa52a-ae2b-46e3-90b9-72efa9287d5c" />
+
+<img width="707" height="401" alt="image" src="https://github.com/user-attachments/assets/81f619a7-6335-4074-95bf-7fe54155a98d" />
 
