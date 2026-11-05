@@ -1,19 +1,19 @@
 /* Fuente global */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #FFFFFF;
-    color: #343A40;
+    background-color: #FBF4F5;
+    color: #493B49;
 }
 
 /* Tarjetas de productos */
 .product-card {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 1px solid rgba(190, 139, 164, 0.25);
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.5rem 1rem rgba(164, 111, 145, 0.20);
 }
 
 /* Imagen de la tarjeta con altura fija para mantener orden */
@@ -22,7 +22,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f8f9fa;
+    background-color: #F5E8ED;
 }
 
 .product-img-top {
