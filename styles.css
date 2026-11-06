@@ -64,3 +64,58 @@ body {
     object-fit: contain;
     width: 100%;
 }
+
+
+
+
+
+/* REDES SOCIALES */
+.social-section {
+    background-color: #f8f5f0;
+    border-top: 1px solid #e8e0d5;
+}
+
+.social-section h4 {
+    color: #34302b;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    color: #34302b;
+    font-size: 23px;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-6px);
+    color: white;
+}
+
+.whatsapp:hover {
+    background-color: #25D366;
+}
+
+.instagram:hover {
+    background-color: #E1306C;
+}
+
+.youtube:hover {
+    background-color: #FF0000;
+}
+
+@media (max-width: 576px) {
+    .social-link {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+}
+
